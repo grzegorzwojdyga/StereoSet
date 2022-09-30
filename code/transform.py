@@ -1,15 +1,17 @@
-import deepl
-'''
-Description: https://pypi.org/project/deepl/
-'''
+import json
 
-class DeepL(object):
-    def __init__(self):
-        self.auth_key = "b5e3d717-eb8b-f266-159e-51caeda566e3:fx"
-        self.translator = deepl.Translator(self.auth_key)
+from Translation import DeepL
 
-    def translate(text, source="EN", target="PL"):
-        result = self.translator.translate_text(text, source, target)
-        return result.text
+file_name = "data/dev.json"
+
+
+deepl = DeepL()
+sentence = "I have no idea which room should I clean."
+translation = deepl.translate(sentence)
+print(translation)
+
+with open(file_name, 'r') as f:
+    data = json.load(f)
+    print(data.keys())
 
 
